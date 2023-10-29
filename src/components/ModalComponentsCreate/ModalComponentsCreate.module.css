@@ -1,0 +1,60 @@
+.container{
+
+}
+
+.container > form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    align-items: center;
+}
+
+.input {
+    width: 100%;
+    position: relative;
+}
+
+.input > p {
+    position: absolute;
+    top: -12px;
+    left: 8px;
+    background: white;
+    padding: 0px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #5b43da;
+    margin: 0;
+}
+
+.input > input {
+    border: solid 1px #5b43da;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input > input:focus {
+    border-color: #4a36b6;
+}
+
+.container > form > input[type='submit'] {
+    background-color: #5b43da;
+    border: none;
+    padding: 12px 24px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: ease-in-out .3s;
+}
+
+.container > form > input[type='submit']:hover {
+    opacity: 0.9;
+}

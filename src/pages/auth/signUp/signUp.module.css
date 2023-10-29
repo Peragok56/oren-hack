@@ -1,0 +1,112 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container > form {
+    box-shadow: 0px 0px 24px 4px rgba(91, 67, 218, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 424px;
+    max-width: 100%;
+    background-color: white;
+}
+
+.container > form > span {
+    display: block;
+    font-size: 14px;
+    color: white;
+    background-color: #5b43da;
+    padding: 6px 12px;
+    border-radius: 12px;
+    margin-top: -12px;
+}
+
+.container > form > h1 {
+    color: #5b43da;
+    font-weight: 500;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 100%;
+    position: relative;
+}
+
+.input > p {
+    position: absolute;
+    top: -12px;
+    left: 8px;
+    background: white;
+    padding: 0px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #5b43da;
+    margin: 0;
+}
+
+.input > input {
+    border: solid 1px #5b43da;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input > input:focus {
+    border-color: #4a36b6;
+}
+
+.container > form > input[type='submit'] {
+    background-color: #5b43da;
+    border: none;
+    padding: 12px 24px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: ease-in-out .3s;
+}
+
+.container > form > input[type='submit']:hover {
+    opacity: 0.9;
+}
+
+.help-block {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.help-block > p {
+    color: gray;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.help-block > a {
+    text-decoration: none;
+    color: #5b43da;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.help-block > a:hover {
+    color: #4a36b6;
+}

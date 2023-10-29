@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    gap: 10px;
+    background: #F4F4F4;
+    border-radius: 5px;
+
+    padding: 14px;
+}
+
+.container > input {
+    border: none;
+    outline: none;
+    background: transparent;
+
+    height: max-content;
+
+    color: rgba(0, 0, 0, 0.30);
+}
+
+.container > input::placeholder{
+    color: rgba(0, 0, 0, 0.30);
+}

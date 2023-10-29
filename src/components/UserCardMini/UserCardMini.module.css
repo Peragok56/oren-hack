@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+
+    max-width: 325px;
+}
+
+.avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.userName {
+    font-size: 20px;
+    font-weight: 600;
+    color: #5B43DA;
+}
+
+.userEmail {
+    font-size: 16px;
+    color: #333;
+}
+
+.actionButton {
+    background-color: #5B43DA;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    width: 32px;
+    height: 32px;
+}
+
+.actionButton:hover {
+    background-color: #4A36B6;
+}
+
+.button-list{
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+    justify-content: space-between;
+    margin-top: 4px;
+}

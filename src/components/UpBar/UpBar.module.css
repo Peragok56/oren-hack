@@ -1,0 +1,42 @@
+.start-block{
+    width: 100%;
+    padding: 16px 80px 16px 40px;
+
+    display: flex;
+    gap: 4px;
+
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: solid 1px #EEEEEE;
+}
+
+.firstName {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: normal;
+}
+
+.date{
+    font-weight: 400;
+    font-size: 13px;
+    color: gray;
+}
+
+.setting > a{
+    width: 45px;
+    height: 45px;
+
+    background-color: #fff;
+
+    padding: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+
+    text-decoration: none;
+
+    color: black;
+}

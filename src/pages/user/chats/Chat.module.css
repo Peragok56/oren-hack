@@ -1,0 +1,30 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #F9F9F9;
+}
+
+.left-block{
+    width: 275px;
+    height: 100%;
+    min-height: 100vh;
+
+    padding: 8px 16px;
+
+    border-right: solid 1px gray;
+}
+
+.searchInput{
+    border: solid .5px rgba(128, 128, 128, 0.442);
+    outline: none;
+
+    padding: 4px 8px;
+    width: 100%;
+    border-radius: 6px;
+
+    margin-bottom: 24px;
+}

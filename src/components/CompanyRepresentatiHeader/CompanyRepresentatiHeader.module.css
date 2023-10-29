@@ -1,0 +1,68 @@
+.header{
+    position: fixed;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: #FFFFFF;
+    z-index: 1000;
+    box-shadow: -10px 0px 8px 0px rgba(34, 60, 80, 0.1);
+    transition: right 0.3s ease;
+}
+
+.button-container{
+    width: 100%;
+    position: relative;
+}
+
+.header.active{
+    right: 0px;
+}
+
+.button-container > button{
+    position: absolute;
+    left: -25px;
+    top: 12px;
+    background: #FFFFFF;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 100px;
+
+    border: none;
+
+    cursor: pointer;
+
+    box-shadow: -10px 0px 8px 0px rgba(34, 60, 80, 0.1);
+
+}
+
+.menu{
+    padding: 8px 16px;
+    margin-top: 44px;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    gap: 12px;
+}
+
+.menu > a, .menu > .button, .menu > .button > button {
+    text-decoration: none;
+    color: gray;
+
+    background: transparent;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-size: 18px;
+
+    cursor: pointer;
+}
