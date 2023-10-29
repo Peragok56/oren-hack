@@ -47,9 +47,9 @@ export function auth(e: MouseEvent, data: AuthType) {
                 case 'user':
                   window.location.pathname = '/user-main'
                   break
-                case 'volunteer':
+                case 'companyRepresentative':
                   return(
-                    window.location.pathname = '/companyRepresentative'
+                    window.location.pathname = '/company-representativ-main'
                   )
                   default: 
                   break
@@ -90,19 +90,17 @@ export function signUp(e: MouseEvent, data: SignUpType){
              localStorage.setItem('expiresIn', String(Date.now() + (3600 * 24 * 1000)))
              localStorage.setItem('role', res2.data.role)
 
-             window.location.pathname = '/user-main'
-
-            // switch(res2.data.role){
-            //     case 'user':
-            //       window.location.pathname = '/user-main'
-            //       break
-            //     case 'volunteer':
-            //       return(
-            //         window.location.pathname = '/volunteerMain'
-            //       )
-            //       default: 
-            //       break
-            //   }
+            switch(res2.data.role){
+                case 'user':
+                  window.location.pathname = '/user-main'
+                  break
+                case 'companyRepresentative':
+                  return(
+                    window.location.pathname = '/company-representativ-main'
+                  )
+                  default: 
+                  break
+              }
         })
          .catch((err3) => {
           console.log(err3);

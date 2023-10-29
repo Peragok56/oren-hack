@@ -17,23 +17,23 @@ const Professions = () => {
     }, [])
 
     useEffect(() => {
-        axios.get('/occupation/findAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        axios.get('/roles-company/findAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
         .then(res => {
             setOccupations(res.data)
         })
     }, [])
 
     const reegreshOccupation = () => {
-        axios.get('/occupation/findAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        axios.get('/roles-company/findAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
         .then(res => {
             setOccupations(res.data)
         })
     }
 
     const removeProfession = (id: number) => {
-        axios.delete(`/occupation/remove/${id}`, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        axios.delete(`/roles-company/remove/${id}`, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
         .then(res => {
-            axios.get('/occupation/findAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+            axios.get('/roles-company/findAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
             .then(res => {
                 setOccupations(res.data)
             })
@@ -60,7 +60,7 @@ const Professions = () => {
                     <div className={styles[`block-list`]}>
                         {occupations.map((occupation: any) => 
                             <div className={styles.occupationCard}>
-                                <div className={styles.occupationCardLabel}>{occupation.name}</div>
+                                <div className={styles.occupationCardLabel}>{occupation.nameRole}</div>
 
                                 <button className={styles.occupationCardButton} onClick={() => removeProfession(occupation.id)}>
                                     Удалить

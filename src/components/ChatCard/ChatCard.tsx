@@ -4,14 +4,14 @@ import React, { FC, memo } from "react";
 import styles from './ChatCard.module.css';
 import { IChatCard } from "./ChatCard.type";
 
-const ChatCard: FC<IChatCard> = ({ user, message }) => {
+const ChatCard: FC<IChatCard> = ({ user, message, createChat }) => {
     // const messageDate = new Date(timestamp);
     // const hours = messageDate.getHours().toString().padStart(2, '0');
     // const minutes = messageDate.getMinutes().toString().padStart(2, '0');
     // const formattedTime = `${hours}:${minutes}`;
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} onClick={createChat}>
             <div className={styles.avatar}>
                 <img src={'./logo512.png'} alt={`avatar`} />
             </div>
@@ -23,7 +23,7 @@ const ChatCard: FC<IChatCard> = ({ user, message }) => {
                 
                 {
                     !message ? 
-                    <button className={styles[`buttonSend`]}>Написать</button>
+                    null
                     :
                     <p className={styles.messageText}>{message}</p>
                 }

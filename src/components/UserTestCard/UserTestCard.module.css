@@ -50,3 +50,7 @@
 .actionButton:hover {
     background-color: #4A36B6;
 }
+
+.actionButton:disabled{
+    opacity: .6;
+}

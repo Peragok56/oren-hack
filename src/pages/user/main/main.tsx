@@ -15,6 +15,7 @@ import Swal from "sweetalert2";
 const UserMain = () => {
 
     const [tests, setTests] = useState<any[]>([])
+    const [completeTests, setCompelteTests] = useState<number>(0)
 
     const data: any = [
         { date: "2023-10-01", activity: 10 },
@@ -29,10 +30,19 @@ const UserMain = () => {
         .then(res => {
             console.log(res.data);
             setTests(res.data)
+
+            let count: number = 0
+
+            for (const test of res.data) {
+                if (test.testResultUser) {
+                    count++
+                }
+            }
+
+            setCompelteTests(count)
+
         })
         .catch(err => {
-            console.log(err.response);
-            
             Swal.fire({
                 icon: 'error',
                 title: 'Ой',
@@ -57,7 +67,7 @@ const UserMain = () => {
 
                         <AnalyticsCard 
                             label="Пройденно тестов"
-                            value="7"
+                            value={`${completeTests}`}
                         />
 
                         <AnalyticsCard 

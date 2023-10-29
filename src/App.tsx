@@ -41,6 +41,7 @@ function App() {
             <Layout>
               <CompanyRepresentatiHeader />
               <Switch>
+                <Route path={'/user-chat'} exact component={Chat}/>
                 <Route path={'/company-representativ-professions'} exact component={Professions}/>
                 <Route path={'/company-representativ-test-create'} exact component={CompanyRepresentatiTestCreator}/>
                 <Route path={'/company-representativ-tests'} exact component={CompanyRepresentatiTest}/>

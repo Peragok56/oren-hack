@@ -14,7 +14,9 @@ interface CreateUser {
     lastName: string,
     phoneNumber: string,
     passwordHash: string,
-    email: string
+    email: string,
+    role: string;
+    roleCompany: string
 }
 
 const ModalCreateUser: FC<IModalCreateUser> = ({
@@ -32,6 +34,8 @@ const ModalCreateUser: FC<IModalCreateUser> = ({
             phoneNumber: '',
             passwordHash: '',
             email: '',
+            role: '',
+            roleCompany: ''
         }
     });
 
@@ -39,10 +43,9 @@ const ModalCreateUser: FC<IModalCreateUser> = ({
         const e: MouseEvent = window.event as MouseEvent;
         e.preventDefault()
 
-        axios.post('/users/create', {...data, role: 'HR-meneger'}, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        axios.post('/users/create', data, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
         .then(res => {
             console.log(res.data);
-            
             switchVisibility()
             refreshUsers?.()
         })
@@ -86,7 +89,7 @@ const ModalCreateUser: FC<IModalCreateUser> = ({
 
                     <div className={styles[`input`]}>
                         <p>Роль</p>
-                        <select>
+                        <select {...register('role')}>
                             <option value={'user'}>Рабочий</option>
                             <option value={'HR-meneger'}>HR-менеджер</option>
                             <option value={'adminPortal'}>Админ портала</option>
@@ -96,7 +99,7 @@ const ModalCreateUser: FC<IModalCreateUser> = ({
 
                     <div className={styles[`input`]}>
                         <p>Професcия</p>
-                        <select>
+                        <select {...register('roleCompany')}>
                             {occupations.map((occupation: any) =>
                                 <option value={occupation.id}>{occupation.name}</option>
                             )}

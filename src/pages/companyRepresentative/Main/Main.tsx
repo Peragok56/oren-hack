@@ -12,10 +12,14 @@ import { profileAction } from "../../../hooks/profileAction";
 import { NavLink } from "react-router-dom";
 import ModalComponentsCreate from "../../../components/ModalComponentsCreate/ModalComponentsCreate";
 import UserCard from "../../../components/UserCard/UserCard";
+import axios from "../../../axios/axios";
+import { getCookie } from "../../../auth/authMethod";
 
 const CompanyRepresentativMain = () => {
 
     const [modalCreate, setModalCreate] = useState<boolean>(false)
+    const [users, setUsers] = useState<any[]>([])
+    const [tests, setTests] = useState<any[]>([])
 
     const switchVisibility = useCallback(() => {
         setModalCreate(prev => !prev)
@@ -34,9 +38,18 @@ const CompanyRepresentativMain = () => {
 
     useEffect(() => {
         fetchProfile()
-    }, [])
 
-    
+        axios.get('/users/getAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        .then(res => {
+            console.log(res.data);
+            setUsers(res.data)
+        })
+
+        axios.get('/test/findAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        .then(res => {
+            setTests(res.data)
+        })
+    }, [])
 
     return(
         <div className={styles[`container`]}>
@@ -58,7 +71,7 @@ const CompanyRepresentativMain = () => {
 
                             <AnalyticsCard 
                                 label="Участников"
-                                value="1234"
+                                value={`${users?.length}`}
                             />
 
                             <AnalyticsCard 
@@ -68,7 +81,7 @@ const CompanyRepresentativMain = () => {
 
                             <AnalyticsCard 
                                 label="Всего тестов"
-                                value="189"
+                                value={`${tests?.length}`}
                             />
 
 
@@ -82,15 +95,9 @@ const CompanyRepresentativMain = () => {
                             <h1 className={styles[`ready-test-label`]}>Участники</h1>
 
                             <div className={styles[`tests-block`]}>
-                                <UserCard />
-                                <UserCard />
-                                <UserCard />
-                                <UserCard />
-                                <UserCard />
-                                <UserCard />
-                                <UserCard />
-                                <UserCard />
-                                <UserCard />
+                                {users.map((user) => 
+                                    <UserCard user={user}/>
+                                )}
                             </div>
                         </div>
                     </div>

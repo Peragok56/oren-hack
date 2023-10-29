@@ -1,5 +1,5 @@
 // React
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // Components
 import Question from '../../../components/Question/Question';
 // Types
@@ -18,6 +18,7 @@ import { useHistory } from 'react-router-dom';
 const CompanyRepresentatiTestCreator: React.FC = () => {
   const [questions, setQuestions] = useState<QuestionData[]>([]);
   const [testTitle, setTestTitle] = useState<string>('');
+  const [occuoations, setOccupations] = useState<any[]>([])
 
   const history = useHistory()
 
@@ -33,6 +34,8 @@ const CompanyRepresentatiTestCreator: React.FC = () => {
 
     const test = {
       name: testTitle,
+      // @ts-ignore
+      roleCompanyId: Number(document.getElementById('selectId')?.value),
       questions: questions,
     };
 
@@ -54,6 +57,8 @@ const CompanyRepresentatiTestCreator: React.FC = () => {
 
     })
     .catch(err => {
+      console.log(err.response);
+      
       Swal.fire({
         icon: 'error',
         title: 'Ой',
@@ -61,6 +66,13 @@ const CompanyRepresentatiTestCreator: React.FC = () => {
       })
     })
   };
+
+  useEffect(() => {
+    axios.get('/roles-company/findAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+    .then(res => {
+      setOccupations(res.data)
+    })
+  }, [])
 
   return (
     <div className={styles[`container`]}>
@@ -76,6 +88,13 @@ const CompanyRepresentatiTestCreator: React.FC = () => {
           value={testTitle}
           onChange={(e) => setTestTitle(e.target.value)}
         />
+
+        <select id='selectId'>
+          {occuoations.map((occuoation: any) => 
+            <option value={occuoation.id}>{occuoation.nameRole}</option>
+          )}
+        </select>
+
         <br />
         {questions.map((question, index) => (
           <div key={index} className={styles[`question`]}>

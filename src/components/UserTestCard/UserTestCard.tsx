@@ -13,7 +13,14 @@ const UserTestCard: FC<IUserTestCard> = ({
             <h2 className={styles.title}>{test?.name}</h2>
             <p className={styles.description}>Вопросов: {test?.questions?.length}</p>
             <div className={styles.footer}>
-                <Link to={{pathname: '/test-taker', state: {testId: test?.id}}} className={styles.actionButton}>Пройти тест</Link>
+                {
+                    test?.testResultUser ? 
+                    <button className={styles[`actionButton`]} disabled>
+                        Пройдено
+                    </button>
+                    :
+                    <Link to={{pathname: '/test-taker', state: {testId: test?.id}}} className={styles.actionButton}>Пройти тест</Link>
+                }
             </div>
         </div>
     )

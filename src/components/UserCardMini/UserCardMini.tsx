@@ -10,7 +10,8 @@ import { IoIosRemove } from 'react-icons/io'
 
 const UserCardMini: FC<IUserCardMini> = ({
     user,
-    openModalEdit
+    openModalEdit,
+    removeUser
 }) => {
     return(
         <div className={styles.container}>
@@ -20,14 +21,14 @@ const UserCardMini: FC<IUserCardMini> = ({
             <div className={styles.userInfo}>
                 <h2 className={styles.userName}>{user?.firstName} {user.lastName}</h2>
                 <p className={styles.userEmail}>{user?.email}</p>
-                <p className={styles.userEmail}>Программист</p>
+                <p className={styles.userEmail}>{user?.roleCompany}</p>
                 
                 <div className={styles[`button-list`]}>
                     <button className={styles.actionButton} onClick={openModalEdit}>
                         <AiOutlineInfo/>
                     </button>
 
-                    <button className={styles.actionButton}>
+                    <button className={styles.actionButton} onClick={removeUser}>
                         <IoIosRemove />
                     </button>
                 </div>

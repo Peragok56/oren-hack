@@ -9,7 +9,7 @@ import axios from "../../axios/axios";
 import { getCookie } from "../../auth/authMethod";
 
 interface ProfessionCreate {
-    name?: string,
+    nameRole?: string,
 }
 
 const ModalProfessionCreate: FC<IModalProfessionCreate> = ({
@@ -20,7 +20,7 @@ const ModalProfessionCreate: FC<IModalProfessionCreate> = ({
 
     const { register, handleSubmit, formState: { errors } } = useForm<ProfessionCreate>({
         defaultValues: {
-            name: '',
+            nameRole: '',
         }
     });
 
@@ -28,7 +28,7 @@ const ModalProfessionCreate: FC<IModalProfessionCreate> = ({
         const e: MouseEvent = window.event as MouseEvent;
         e.preventDefault()
 
-        axios.post('/occupation/create', data, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        axios.post('/roles-company/create', data, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
         .then(res => {
             console.log(res.data);
             switchVisibility?.()
@@ -48,7 +48,7 @@ const ModalProfessionCreate: FC<IModalProfessionCreate> = ({
 
                     <div className={styles[`input`]}>
                         <p>Название</p>
-                        <input {...register('name', { required: '*Поле "Имя" обязательно для заполнения' })} />
+                        <input {...register('nameRole', { required: '*Поле "Имя" обязательно для заполнения' })} />
                     </div>
 
                     <input type="submit" value={'Создать'}/>

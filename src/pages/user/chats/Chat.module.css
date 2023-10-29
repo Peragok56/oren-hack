@@ -1,30 +1,128 @@
 .container{
     width: 100%;
     min-height: 100vh;
+}
 
+.main-container {
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
-
+    flex-direction: row;
     background: #F9F9F9;
 }
 
-.left-block{
+.left-block {
     width: 275px;
+    min-height: 92vh;
     height: 100%;
-    min-height: 100vh;
-
-    padding: 8px 16px;
-
-    border-right: solid 1px gray;
+    padding: 16px;
+    border-right: 1px solid #ccc;
 }
 
-.searchInput{
-    border: solid .5px rgba(128, 128, 128, 0.442);
+.searchInput {
+    border: 1px solid #ccc;
     outline: none;
-
-    padding: 4px 8px;
+    padding: 10px;
     width: 100%;
     border-radius: 6px;
-
     margin-bottom: 24px;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background: rgba(160, 160, 160, 0.537);
+    border-radius: 100px;
+}
+
+.right-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 8px 36px;
+}
+
+.chat-zone {
+    width: 100%;
+    padding: 8px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid #ccc;
+
+}
+
+.chat-zone > input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.chat-zone > button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #5B43DA;
+    color: #fff;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-zone > button:hover {
+    background-color: #4A36B6;
+}
+
+.selfMessage{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.selfMessage > p{
+    background: #5B43DA;
+    padding: 4px 8px;
+    border-radius: 6px;
+
+    color: white;
+    font-weight: 300;
+}
+
+.notSelfMessage{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+
+.notSelfMessage > p{
+    background: #939393;
+    padding: 4px 8px;
+    border-radius: 6px;
+
+    color: white;
+    font-weight: 300;
 }

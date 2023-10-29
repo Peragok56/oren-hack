@@ -16,7 +16,14 @@ const TasthorizontalCard:FC<ITasthorizontalCard> = ({
             </div>
             <div className={styles.footer}>
                 <div>Дата теста: 01.01.2023</div>
-                <Link to={{pathname: ''}}>Пройти тест</Link>
+                {
+                    test?.testResultUser ?
+                    <button disabled>
+                        Пройденно
+                    </button>
+                    :
+                    <Link to={{pathname: '/test-taker', state: {testId: test?.id}}}>Пройти тест</Link>
+                }
             </div>
         </div>
     )

@@ -33,21 +33,21 @@ const ModalEdituser: FC<IModalEdituser> = ({
         const e: MouseEvent = window.event as MouseEvent;
         e.preventDefault()
 
-        axios.post('/users/addRoleCompany', 
-        {
-            userId: userId,
-            rolesCompanyId: Number(data.rolesCompanyId)
-        }, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
-        .then(res => {
-            axios.post('/users/addHomeRole', 
+        axios.post('/users/addHomeRole', 
             {
                 userId: userId,
                 role: data.role
-            })
+            }, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
             .then(res => {
-                switchVisibility?.()
+                axios.post('/users/addRoleCompany', 
+                {
+                    userId: userId,
+                    rolesCompanyId: Number(data.rolesCompanyId)
+                }, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+                .then(res => {
+                    switchVisibility?.()
+                })
             })
-        })
         
     };
 
@@ -62,7 +62,7 @@ const ModalEdituser: FC<IModalEdituser> = ({
     }, [userId])
 
     useEffect(() => {
-        axios.get('/occupation/findAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        axios.get('/roles-company/findAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
         .then(res => {
             setOccupations(res.data)
         })
@@ -83,7 +83,6 @@ const ModalEdituser: FC<IModalEdituser> = ({
                             <option value={'user'}>Рабочий</option>
                             <option value={'HR-meneger'}>HR-менеджер</option>
                             <option value={'adminPortal'}>Админ портала</option>
-                            <option value={'HR-meneger'}>HR-менеджер</option>
                         </select>
                     </div>
 
@@ -91,7 +90,7 @@ const ModalEdituser: FC<IModalEdituser> = ({
                         <p>Професcия</p>
                         <select {...register('rolesCompanyId')}>
                             {occupations.map((occupation: any) =>
-                                <option value={occupation.id}>{occupation.name}</option>
+                                <option value={occupation.id}>{occupation.nameRole}</option>
                             )}
                         </select>
                     </div>

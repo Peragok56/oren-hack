@@ -46,6 +46,17 @@ const CompanyRepresentativUsers = () => {
         switchVisibilityEdit()
     }
 
+    const removeUser = (id: number) => {
+        axios.delete(`/users/${id}/remove`, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        .then(res => {
+            axios.get('/users/getAll', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+            .then(res => {
+                console.log(res.data);
+                setCompanyUsers(res.data)
+            })
+        })
+    }
+
     return(
         <div className={styles[`container`]}>
 
@@ -68,6 +79,7 @@ const CompanyRepresentativUsers = () => {
                             <UserCardMini 
                                 user={user}
                                 openModalEdit={() => openModalEdit(user.id)}
+                                removeUser={() => removeUser(user.id)}
                             />
                         )}
                     </div>
