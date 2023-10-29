@@ -13,6 +13,7 @@ import SerachInput from "../searchInput/serachInput";
 import { Link } from "react-router-dom";
 // Icons
 import { BiMessageAltDetail } from 'react-icons/bi'
+import { localVariables } from "../../variables";
 
 const UpBar: FC = () => {
 
@@ -29,10 +30,18 @@ const UpBar: FC = () => {
 
     return(
         <div className={styles[`start-block`]}>
+            
+            
 
             <div className={styles[`user-info`]}>
-                <div className={styles[`firstName`]}>Привет, {user.firstName}</div>
-                <div className={styles[`date`]}>{capitalizedMonth}</div>
+                {
+                    user?.company?.icon && 
+                    <img src={`http://${localVariables.API_URL}${user.company?.icon}`} className={styles[`company-logo`]}/>
+                }
+                <div>
+                    <div className={styles[`firstName`]}>Привет, {user.firstName}</div>
+                    <div className={styles[`date`]}>{capitalizedMonth}</div>
+                </div>
             </div>
 
             <div className={styles[`setting`]}>

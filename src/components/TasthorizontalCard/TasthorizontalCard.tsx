@@ -19,7 +19,7 @@ const TasthorizontalCard:FC<ITasthorizontalCard> = ({
                 {
                     test?.testResultUser && test.testResultUser?.length != 0 ?
                     <button disabled>
-                        Пройденно
+                        Пройти в VR
                     </button>
                     :
                     <Link to={{pathname: '/test-taker', state: {testId: test?.id}}}>Пройти тест</Link>

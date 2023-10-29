@@ -7,6 +7,7 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { FaRegNoteSticky } from 'react-icons/fa6'
 import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai'
 import { IoExitOutline } from 'react-icons/io5'
+import { BiBook } from 'react-icons/bi'
 // react-riuter-dom
 import { Link, NavLink } from 'react-router-dom';
 
@@ -63,6 +64,12 @@ const Header = () => {
             <FaRegNoteSticky />
             <div className={styles[`link-label`]}> Тестирование </div>  
           </NavLink>
+
+          <NavLink to={{pathname: '/user-education'}} activeClassName='activeNav'>
+            <BiBook />
+            <div className={styles[`link-label`]}> Учебный материал </div>  
+          </NavLink>
+
           <NavLink to={{pathname: '/user-profile'}} activeClassName='activeNav'>
             <AiOutlineUser />
             <div className={styles[`link-label`]}> Профиль </div>

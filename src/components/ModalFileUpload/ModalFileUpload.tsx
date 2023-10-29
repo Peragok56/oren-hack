@@ -17,7 +17,8 @@ interface CreateUser {
 
 const ModalFileUpload: FC<IModalFileUpload> = ({
     isOpen,
-    switchVisibility
+    switchVisibility,
+    refreshEducation
 }) => {
     const [roles, setRoles] = useState<any[]>([])
 
@@ -60,10 +61,11 @@ const ModalFileUpload: FC<IModalFileUpload> = ({
             name: data.name,
             description: data.description,
             roleCompanyId: Number(data.roleCompanyId),
-            documents: [{docuemntBase64: base64, name: fileName}]
+            documents: [{documentBase64: base64, name: fileName}]
         }, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
         .then(res => {
-            
+            switchVisibility?.()
+            refreshEducation?.()
         })
         .catch(err => {
             Swal.fire({

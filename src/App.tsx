@@ -28,6 +28,7 @@ import Chat from './pages/user/chats/Chat';
 import TestStatic from './pages/companyRepresentative/TestStatic/TestStatic';
 import Education from './pages/companyRepresentative/Education/Education';
 import ViewUserTestResult from './pages/companyRepresentative/ViewUserTestResult/ViewUserTestResult';
+import UserEducation from './pages/user/Education/Education';
 
 function App() {
 
@@ -94,6 +95,7 @@ function App() {
           <Layout>
             <Header />
             <Switch>
+              <Route path={'/user-education'} exact component={UserEducation}/>
               <Route path={'/user-chat'} exact component={Chat}/>
               <Route path={'/test-taker'} exact component={TestTaker}/>
               <Route path={'/test-creator'} exact component={TestCreator}/>

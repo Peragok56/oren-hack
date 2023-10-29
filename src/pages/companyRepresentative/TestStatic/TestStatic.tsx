@@ -78,9 +78,9 @@ const TestStatic: React.FC = () => {
                     <div className={styles[`block-list`]}>
                         <div className={styles[`table`]}>
                             <div className={styles[`line`]}>
-                                <h2>ФИО</h2>
-                                <h2>Кол-во правильных ответов</h2>
-                                <h2>Просмотр теста</h2>
+                                <h3>ФИО</h3>
+                                <h3>Кол-во правильных ответов</h3>
+                                <h3>Просмотр теста</h3>
                             </div>
                             {userStats.map((user, index) => (
                                 <div className={styles[`line`]}>

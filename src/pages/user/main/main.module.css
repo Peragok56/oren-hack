@@ -30,6 +30,8 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    min-width: 1050px;
 }
 
 .right-block{

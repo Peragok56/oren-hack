@@ -32,11 +32,30 @@ const ModalUpdateProfile: FC<IModalUpdateProfile> = ({
         }
     });
 
+    const convertBase64 = (file: any) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+    
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+    
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
+
     const onSubmit = async (data: CreateUser) => {
         const e: MouseEvent = window.event as MouseEvent;
         e.preventDefault()
 
-        axios.patch('/users/update', data, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        // @ts-ignore
+        const file = document.getElementById('fileId').files[0];
+        const base64 = await convertBase64(file);
+
+        axios.patch('/users/update', {...data, icon: base64}, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
         .then(res => {
             axios.get('/users/getInfo', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
             .then(res => {
@@ -101,6 +120,11 @@ const ModalUpdateProfile: FC<IModalUpdateProfile> = ({
                     <div className={styles[`input`]}>
                         <p>Номер телефона</p>
                         <input {...register('phoneNumber', { required: '*Поле "Номер телефона" обязательно для заполнения' })} />
+                    </div>
+
+                    <div className={styles[`input`]}>
+                        <p>Фото</p>
+                        <input type="file" id="fileId"/>
                     </div>
 
                     <input type="submit" value={'Создать'}/>

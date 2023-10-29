@@ -14,12 +14,18 @@ import ModalComponentsCreate from "../../../components/ModalComponentsCreate/Mod
 import UserCard from "../../../components/UserCard/UserCard";
 import axios from "../../../axios/axios";
 import { getCookie } from "../../../auth/authMethod";
+import CircleChart from "../../../components/CircleChart/CircleChart";
 
 const CompanyRepresentativMain = () => {
+
+    const categories = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май'];
+    const datada = [50, 30, 45, 60, 20];
 
     const [modalCreate, setModalCreate] = useState<boolean>(false)
     const [users, setUsers] = useState<any[]>([])
     const [tests, setTests] = useState<any[]>([])
+
+    const [userInfo, setUserInfo] = useState<any>()
 
     const switchVisibility = useCallback(() => {
         setModalCreate(prev => !prev)
@@ -49,6 +55,11 @@ const CompanyRepresentativMain = () => {
         .then(res => {
             setTests(res.data)
         })
+
+        axios.get('/users/getInfo', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+        .then(res => {
+            setUserInfo(res.data)
+        })
     }, [])
 
     return(
@@ -68,6 +79,11 @@ const CompanyRepresentativMain = () => {
                 
                     <div className={styles[`left-block`]}>
                         <div className={styles[`analytics-bloks`]}>
+
+                            <AnalyticsCard 
+                                label="Наша компания"
+                                value={`${userInfo?.company?.name}`}
+                            />
 
                             <AnalyticsCard 
                                 label="Участников"
@@ -94,6 +110,7 @@ const CompanyRepresentativMain = () => {
 
                     <div className={styles[`right-block`]}>
                         <DayliActivityChart data={data}/>
+                        <CircleChart data={datada} categories={categories} />
                     </div>
 
                 </div>

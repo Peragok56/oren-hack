@@ -47,6 +47,12 @@ export function auth(e: MouseEvent, data: AuthType) {
                 case 'user':
                   window.location.pathname = '/user-main'
                   break
+                  case 'adminPortal':
+                  window.location.pathname = '/company-representativ-main'
+                  break
+                  case 'HR-meneger':
+                  window.location.pathname = '/company-representativ-main'
+                  break
                 case 'companyRepresentative':
                   return(
                     window.location.pathname = '/company-representativ-main'
@@ -94,6 +100,12 @@ export function signUp(e: MouseEvent, data: SignUpType){
                 case 'user':
                   window.location.pathname = '/user-main'
                   break
+                  case 'adminPortal':
+                  window.location.pathname = '/company-representativ-main'
+                  break
+                  case 'HR-meneger':
+                  window.location.pathname = '/company-representativ-main'
+                  break
                 case 'companyRepresentative':
                   return(
                     window.location.pathname = '/company-representativ-main'
@@ -111,6 +123,13 @@ export function signUp(e: MouseEvent, data: SignUpType){
                    })
              console.log(err3);
          })
+    })
+    .catch(err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ой',
+        text: `${err.response.data.message}`,
+      })
     })
     
 }

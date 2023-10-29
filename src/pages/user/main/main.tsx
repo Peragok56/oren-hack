@@ -10,9 +10,12 @@ import TasthorizontalCard from "../../../components/TasthorizontalCard/Tasthoriz
 import axios from "../../../axios/axios";
 import { getCookie } from "../../../auth/authMethod";
 import Swal from "sweetalert2";
+import { profileAction } from "../../../hooks/profileAction";
 
 
 const UserMain = () => {
+
+    const [userInfo, setUserInfo] = useState<any>()
 
     const [tests, setTests] = useState<any[]>([])
     const [completeTests, setCompelteTests] = useState<number>(0)
@@ -41,6 +44,11 @@ const UserMain = () => {
 
             setCompelteTests(count)
 
+            axios.get('/users/getInfo', {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
+            .then(res => {
+                setUserInfo(res.data)
+            })
+
         })
         .catch(err => {
             Swal.fire({
@@ -61,6 +69,11 @@ const UserMain = () => {
                 <div className={styles[`left-block`]}>
                     <div className={styles[`analytics-bloks`]}>
                         <AnalyticsCard 
+                            label="Наша компания"
+                            value={`${userInfo?.company?.name}`}
+                        />
+                        
+                        <AnalyticsCard 
                             label="Всего тестов"
                             value={`${tests.length}`}
                         />
@@ -70,15 +83,6 @@ const UserMain = () => {
                             value={`${completeTests}`}
                         />
 
-                        <AnalyticsCard 
-                            label="Пройденно тестов"
-                            value="7"
-                        />
-
-                        <AnalyticsCard 
-                            label="Пройденно тестов"
-                            value="7"
-                        />
                     </div>
 
                     <div className={styles[`ready-test`]}>

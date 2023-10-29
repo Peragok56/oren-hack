@@ -16,7 +16,7 @@ const UserTestCard: FC<IUserTestCard> = ({
                 {
                     test?.testResultUser?.length != 0 ? 
                     <button className={styles[`actionButton`]} disabled>
-                        Пройдено
+                        Пройти в VR
                     </button>
                     :
                     <Link to={{pathname: '/test-taker', state: {testId: test?.id}}} className={styles.actionButton}>Пройти тест</Link>

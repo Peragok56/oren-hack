@@ -11,6 +11,7 @@ import { profileAction } from "../../../hooks/profileAction";
 import { format } from 'date-fns';
 import ruLocale from 'date-fns/locale/ru';
 import ModalUpdateProfile from "../../../components/ModalUpdateProfile/ModalUpdateProfile";
+import { localVariables } from "../../../variables";
 
 const UserProfile = () => {
 
@@ -34,7 +35,7 @@ const UserProfile = () => {
 
             <div className={styles.profileContent}>
                 <div className={styles.profileImage}>
-                    <img src="./logo512.png" alt="User Profile" />
+                    <img src={`http://${localVariables.API_URL}${user?.icon}`} alt="User Profile" />
                 </div>
                 <div className={styles.profileDetails}>
                     <h1>{user.firstName} {user.lastName}</h1>

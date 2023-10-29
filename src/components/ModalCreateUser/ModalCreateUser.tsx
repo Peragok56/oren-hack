@@ -16,7 +16,8 @@ interface CreateUser {
     passwordHash: string,
     email: string,
     role: string;
-    roleCompany: string
+    roleCompany: string,
+    bithDate: string
 }
 
 const ModalCreateUser: FC<IModalCreateUser> = ({
@@ -35,7 +36,8 @@ const ModalCreateUser: FC<IModalCreateUser> = ({
             passwordHash: '',
             email: '',
             role: '',
-            roleCompany: ''
+            roleCompany: '',
+            bithDate: ''
         }
     });
 
@@ -80,6 +82,11 @@ const ModalCreateUser: FC<IModalCreateUser> = ({
                     <div className={styles[`input`]}>
                         <p>Почта</p>
                         <input {...register('email', { required: '*Поле "Почта" обязательно для заполнения' })} />
+                    </div>
+
+                    <div className={styles[`input`]}>
+                        <p>Дата рождения</p>
+                        <input type="date" {...register('bithDate', { required: '*Поле "Дата рождения" обязательно для заполнения' })} />
                     </div>
 
                     <div className={styles[`input`]}>

@@ -1,5 +1,5 @@
 // React
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 // Styles
 import styles from './Profile.module.css'
 // Coponents
@@ -10,8 +10,17 @@ import { profileAction } from "../../../hooks/profileAction";
 // Date Format
 import { format } from 'date-fns';
 import ruLocale from 'date-fns/locale/ru';
+// URL
+import { localVariables } from '../../../variables'
+import ModalEdituser from "../../../components/ModalEdituser/ModalEdituser";
+import ModalUpdateProfile from "../../../components/ModalUpdateProfile/ModalUpdateProfile";
 
 const CompanyRepresentativProfile = () => {
+    const [updateUser, setUpdateUser] = useState<boolean>(false)
+
+    const switchvisibility = useCallback(() => {
+        setUpdateUser(prev => !prev)
+    }, [])
 
     const today: Date = new Date();
     const formattedDate: string = format(today, "MMMM dd, yyyy", { locale: ruLocale });
@@ -31,7 +40,7 @@ const CompanyRepresentativProfile = () => {
 
             <div className={styles.profileContent}>
                 <div className={styles.profileImage}>
-                    <img src="./logo512.png" alt="User Profile" />
+                    <img src={`http://${localVariables.API_URL}${user?.icon}`} alt="User Profile" />
                 </div>
                 <div className={styles.profileDetails}>
                     <h1>{user.firstName} {user.lastName}</h1>
@@ -39,11 +48,16 @@ const CompanyRepresentativProfile = () => {
                     <p>Номер телефона: {user.phoneNumber}</p>
                     
                     <div className={styles[`button-list`]}>
-                        <button className={styles.editButton}>Редактировать профиль</button>
+                        <button className={styles.editButton} onClick={switchvisibility}>Редактировать профиль</button>
                         <button className={styles.editButton}>Сменить пароль</button>
                     </div>
                 </div>
             </div>
+
+            <ModalUpdateProfile 
+                isOpen={updateUser}
+                switchVisibility={switchvisibility}
+            />
         </div>
     )
 }

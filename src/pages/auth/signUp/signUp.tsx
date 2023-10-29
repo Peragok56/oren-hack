@@ -30,6 +30,7 @@ const SignUp = () => {
 
     const onSubmit = (data: SignUpType) => {
         const e: MouseEvent = window.event as MouseEvent;
+        console.log(data);
         signUp(e, data);
     };
 
@@ -63,6 +64,12 @@ const SignUp = () => {
                     <input {...register('phoneNumber', { required: '*Поле "Номер телефона" обязательно для заполнения' })} />
                 </div>
                     {errors.phoneNumber && <span className={styles['error']}>{errors.phoneNumber.message}</span>}
+
+                <div className={styles[`input`]}>
+                    <p>Дата рождения</p>
+                    <input type="date"  />
+                </div>
+                    {/* {errors.phoneNumber && <span className={styles['error']}>{errors.bithDate.message}</span>} */}
 
                 <div className={styles[`input`]}>
                     <p>Пароль</p>

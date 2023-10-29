@@ -40,3 +40,15 @@
 
     color: black;
 }
+
+.company-logo{
+    width: 54px;
+    height: 54px;
+    border-radius: 100px;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
