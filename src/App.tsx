@@ -25,29 +25,67 @@ import Professions from './pages/companyRepresentative/Professions/Professions';
 import UserTests from './pages/user/test/Tests';
 import TestTaker from './pages/user/Testjoin/TestJoin';
 import Chat from './pages/user/chats/Chat';
+import TestStatic from './pages/companyRepresentative/TestStatic/TestStatic';
+import Education from './pages/companyRepresentative/Education/Education';
+import ViewUserTestResult from './pages/companyRepresentative/ViewUserTestResult/ViewUserTestResult';
 
 function App() {
 
   function router(role: any){
     console.log(role);
     switch(role){
-      case 'admin':
+      case 'adminPortal':
         return (
-          <Switch>
-          </Switch>
-        );
-        case 'companyRepresentative':
-          return (
-            <Layout>
+          <Layout>
               <CompanyRepresentatiHeader />
               <Switch>
+                <Route path={'/view-user-test'} exact component={ViewUserTestResult}/>
+                <Route path={'/company-representativ-education'} exact component={Education}/>
                 <Route path={'/user-chat'} exact component={Chat}/>
+                <Route path={'/test-static'} exact component={TestStatic}/>
                 <Route path={'/company-representativ-professions'} exact component={Professions}/>
                 <Route path={'/company-representativ-test-create'} exact component={CompanyRepresentatiTestCreator}/>
                 <Route path={'/company-representativ-tests'} exact component={CompanyRepresentatiTest}/>
                 <Route path={'/company-representativ-profile'} exact component={CompanyRepresentativProfile}/>
                 <Route path={'/company-representativ-users'} exact component={CompanyRepresentativUsers}/>
                 <Route path={'/company-representativ-main'} exact component={CompanyRepresentativMain}/>
+              </Switch>
+            </Layout>
+        );
+      case 'HR-meneger':
+        return (
+          <Layout>
+              <CompanyRepresentatiHeader />
+              <Switch>
+                <Route path={'/view-user-test'} exact component={ViewUserTestResult}/>
+                <Route path={'/company-representativ-education'} exact component={Education}/>
+                <Route path={'/user-chat'} exact component={Chat}/>
+                <Route path={'/test-static'} exact component={TestStatic}/>
+                <Route path={'/company-representativ-professions'} exact component={Professions}/>
+                <Route path={'/company-representativ-test-create'} exact component={CompanyRepresentatiTestCreator}/>
+                <Route path={'/company-representativ-tests'} exact component={CompanyRepresentatiTest}/>
+                <Route path={'/company-representativ-profile'} exact component={CompanyRepresentativProfile}/>
+                <Route path={'/company-representativ-users'} exact component={CompanyRepresentativUsers}/>
+                <Route path={'/company-representativ-main'} exact component={CompanyRepresentativMain}/>
+              </Switch>
+            </Layout>
+        );
+        case 'companyRepresentative':
+          return (
+            <Layout>
+              <CompanyRepresentatiHeader />
+              <Switch>
+                <Route path={'/view-user-test'} exact component={ViewUserTestResult}/>
+                <Route path={'/company-representativ-education'} exact component={Education}/>
+                <Route path={'/user-chat'} exact component={Chat}/>
+                <Route path={'/test-static'} exact component={TestStatic}/>
+                <Route path={'/company-representativ-professions'} exact component={Professions}/>
+                <Route path={'/company-representativ-test-create'} exact component={CompanyRepresentatiTestCreator}/>
+                <Route path={'/company-representativ-tests'} exact component={CompanyRepresentatiTest}/>
+                <Route path={'/company-representativ-profile'} exact component={CompanyRepresentativProfile}/>
+                <Route path={'/company-representativ-users'} exact component={CompanyRepresentativUsers}/>
+                <Route path={'/company-representativ-main'} exact component={CompanyRepresentativMain}/>
+                <Route path={'/'} exact component={Main}/>
               </Switch>
             </Layout>
           );

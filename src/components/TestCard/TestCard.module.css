@@ -43,8 +43,16 @@
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+
+    text-decoration: none;
 }
 
 .actionButton:hover {
     background-color: #4A36B6;
+}
+
+.button-list{
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }

@@ -37,6 +37,9 @@ import UpBar from '../../../components/UpBar/UpBar';
                 questions: formattedQuestions
             };
 
+            console.log(formattedQuestions);
+            
+
             axios.post('/test/resultUser/create', dataToSend, {headers: {Authorization: `Bearer ${getCookie('accessToken')}`}})
                 .then(response => {
                     Swal.fire({

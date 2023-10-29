@@ -17,7 +17,7 @@ const TasthorizontalCard:FC<ITasthorizontalCard> = ({
             <div className={styles.footer}>
                 <div>Дата теста: 01.01.2023</div>
                 {
-                    test?.testResultUser ?
+                    test?.testResultUser && test.testResultUser?.length != 0 ?
                     <button disabled>
                         Пройденно
                     </button>

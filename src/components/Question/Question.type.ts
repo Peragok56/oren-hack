@@ -10,5 +10,5 @@ export interface QuestionData {
   }
   
 export interface QuestionProps {
-    onSave: (data: QuestionData) => void;
+    onSave?: (data: QuestionData) => void;
   }

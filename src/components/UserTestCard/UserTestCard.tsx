@@ -14,7 +14,7 @@ const UserTestCard: FC<IUserTestCard> = ({
             <p className={styles.description}>Вопросов: {test?.questions?.length}</p>
             <div className={styles.footer}>
                 {
-                    test?.testResultUser ? 
+                    test?.testResultUser?.length != 0 ? 
                     <button className={styles[`actionButton`]} disabled>
                         Пройдено
                     </button>

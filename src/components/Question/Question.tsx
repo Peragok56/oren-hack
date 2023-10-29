@@ -37,7 +37,7 @@ const Question: FC<QuestionProps> = ({
         return;
         }
         
-        onSave({
+        onSave?.({
         question,
         answers,
         });
@@ -78,7 +78,9 @@ const Question: FC<QuestionProps> = ({
                         />
                     </div>
                 ))}
-                <button onClick={handleSave} className={styles[`button`]}>Добавить вопрос</button>
+                
+                    {onSave && <button onClick={handleSave} className={styles[`button`]}>Добавить вопрос</button>}
+
             </div>
         </div>
     )

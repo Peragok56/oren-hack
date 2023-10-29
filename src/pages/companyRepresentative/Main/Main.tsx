@@ -75,20 +75,10 @@ const CompanyRepresentativMain = () => {
                             />
 
                             <AnalyticsCard 
-                                label="Прошли сегодня тест"
-                                value="257"
-                            />
-
-                            <AnalyticsCard 
                                 label="Всего тестов"
                                 value={`${tests?.length}`}
                             />
 
-
-                            <AnalyticsCard 
-                                label="Пройденно тестов"
-                                value="7"
-                            />
                         </div>
 
                         <div className={styles[`ready-test`]}>

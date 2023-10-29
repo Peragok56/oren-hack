@@ -21,6 +21,7 @@
 
 .analytics-bloks{
     width: 100%;
+    min-width: 1050px;
     display: flex;
     align-items: center;
     gap: 16px;

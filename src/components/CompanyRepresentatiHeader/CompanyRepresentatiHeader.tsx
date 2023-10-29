@@ -9,6 +9,7 @@ import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai'
 import { IoExitOutline } from 'react-icons/io5'
 import { FiUsers } from 'react-icons/fi'
 import { BsPersonWorkspace } from 'react-icons/bs'
+import { BiBook } from 'react-icons/bi'
 // react-riuter-dom
 import { Link, NavLink } from 'react-router-dom';
 
@@ -70,6 +71,11 @@ const CompanyRepresentatiHeader: FC = () => {
             <NavLink to={{pathname: '/company-representativ-professions'}} activeClassName='activeNav'>
                 <BsPersonWorkspace />
                 <div className={styles[`link-label`]}> Професии </div>  
+            </NavLink>
+
+            <NavLink to={{pathname: '/company-representativ-education'}} activeClassName='activeNav'>
+                <BiBook />
+                <div className={styles[`link-label`]}> Учебный материал </div>  
             </NavLink>
 
             <NavLink to={{pathname: '/company-representativ-tests'}} activeClassName='activeNav'>

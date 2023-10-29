@@ -5,7 +5,7 @@ import { SignUpType } from "../pages/auth/signUp/signUp";
 import { AuthType } from "../pages/auth/signIn/signIn";
 
 export function setCookie(name: string, value: string, daysToLive: number) {
-  var cookie = name + "=" + encodeURIComponent(Buffer.from(value).toString('base64'));
+  var cookie = name + "=" + value;
   
   if(typeof daysToLive === "number") {
       cookie += "; max-age=" + (daysToLive*24*60*60 * 8);
@@ -18,12 +18,12 @@ export function getCookie(name: string) {
   var cookieArr = document.cookie.split(";");
 
   for(var i = 0; i < cookieArr.length; i++) {
-      var cookiePair = cookieArr[i].split("=");
-      if(name == cookiePair[0].trim()) {
-        let value = decodeURIComponent(Buffer.from(cookiePair[1], 'base64').toString('utf-8'))
-          return value
-      }
+    var cookiePair = cookieArr[i].split("=");
+    if(name === cookiePair[0].trim()) {
+      return cookiePair[1];
+    }
   }
+
   console.log(null);
   return null;
 }
